@@ -1,0 +1,25 @@
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    border: 2px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 32rem;
+    width: 32rem;
+}
+
+.test {
+    border: 2px solid red;
+    width: 2rem;
+    height: 2rem;
+    box-sizing: border-box;
+}
+
+.test:hover {
+    background-color: blue;
+}
