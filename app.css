@@ -1,7 +1,13 @@
 
 body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(250, 221, 185);
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .container {
@@ -20,6 +26,3 @@ body {
     box-sizing: border-box;
 }
 
-.test:hover {
-    background-color: blue;
-}
