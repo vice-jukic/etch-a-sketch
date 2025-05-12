@@ -40,8 +40,16 @@ function changeColor(arr) {
     }
 }
 
+function createButton() {
+    const button = document.createElement("button");
+    button.classList.add("change-size");
+    button.textContent = "Change size";
+    container.appendChild(button);
+}
+
 function run() {
     const test = createGrid();
+    createButton();
     changeColor(test);
 }
 
