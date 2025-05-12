@@ -1,10 +1,9 @@
 
-const SCREEN_WIDTH = "550px";
-const SCREEN_HEIGHT = "550px";
+const SCREEN_SIZE = "550px";
 
 const container = document.querySelector(".container");
-container.style.width = SCREEN_WIDTH;
-container.style.height = SCREEN_HEIGHT;
+container.style.width = SCREEN_SIZE;
+container.style.height = SCREEN_SIZE;
 
 let divNum = 16;
 
@@ -13,8 +12,8 @@ function createGrid() {
     for (let row=1; row<=divNum; row++) {
         for (let col=1; col<=divNum; col++) {
             let square = document.createElement("div");
-            square.style.height = (550 / divNum) + "px";
-            square.style.width = (550 / divNum) + "px";
+            square.style.height = (SCREEN_SIZE / divNum) + "px";
+            square.style.width = (SCREEN_SIZE / divNum) + "px";
             square.classList.add("square");
             container.appendChild(square);
         }
