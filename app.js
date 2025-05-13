@@ -2,19 +2,23 @@
 const SCREEN_SIZE = 550;
 
 const container = document.querySelector(".container");
-const button = document.querySelector(".change-grid")
+const resizeButton = document.querySelector(".change-grid");
+const clearButton = document.querySelector(".clear-grid");
+
+
 container.style.width = SCREEN_SIZE + "px";
 container.style.height = SCREEN_SIZE + "px";
 
-let divNum = 16;
+let gridSize = 16;
+let currentGridSize = gridSize;
 
-function createGrid(divNum) {
+function createGrid(gridSize) {
 
-    for (let row=1; row<=divNum; row++) {
-        for (let col=1; col<=divNum; col++) {
+    for (let row=1; row<=gridSize; row++) {
+        for (let col=1; col<=gridSize; col++) {
             let square = document.createElement("div");
-            square.style.height = (SCREEN_SIZE / divNum) + "px";
-            square.style.width = (SCREEN_SIZE / divNum) + "px";
+            square.style.height = (SCREEN_SIZE / gridSize) + "px";
+            square.style.width = (SCREEN_SIZE / gridSize) + "px";
             square.classList.add("square");
             container.appendChild(square);
         }
@@ -24,8 +28,20 @@ function createGrid(divNum) {
 }
 
 function removeGrid() {
-    const squares = document.querySelectorAll(".square");
-    squares.forEach(square => square.remove());
+    const square = document.querySelectorAll(".square");
+    square.forEach(square => square.remove());
+}
+
+function clearGrid() {
+    removeGrid();
+    const makeGrid = createGrid(currentGridSize);
+    changeColor(makeGrid);
+}
+
+function handleClear() {
+    clearButton.addEventListener("click", () => {
+        clearGrid();
+    })
 }
 
 function randomColor() {
@@ -48,8 +64,8 @@ function changeColor(arr) {
 
 function newGrid() {
 
-    button.addEventListener("click", () => {
-        let newSize
+    resizeButton.addEventListener("click", () => {
+        let newSize;
 
         while (true) {
             newSize = parseInt(prompt("Enter a new size for the grid (1-100):"));
@@ -66,13 +82,20 @@ function newGrid() {
                 alert("You must input a number:")
             }
         }
+
+        currentGridSize = newSize;
+
         removeGrid();
-        const newGrid = createGrid(newSize);
-        changeColor(newGrid);
+        const makeGrid = createGrid(newSize);
+        changeColor(makeGrid);
     });
 }
 
+function run() {
+    const creation = createGrid(gridSize);
+    changeColor(creation);
+    newGrid();
+    handleClear();
+}
 
-const test = createGrid(divNum);
-changeColor(test);
-newGrid();
+run();

@@ -1,14 +1,25 @@
 
-
 body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: rgb(250, 221, 185);
+    background-color: rgb(233, 233, 177);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-family: "Ceviche One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(33, 103, 5);
+    border: 2px solid;
+    border-radius: 10px;
+    background-color: rgb(75, 237, 11);;
 }
 
 .container {
@@ -16,6 +27,32 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 20px;
+}
+
+button {
+    height: 2rem;
+    width: 6rem;
+    border: 2px solid;
+    border-radius: 10px;
+    transition: all 0.25s;
+    background: none;
+    background-color: rgb(255, 234, 47);
+    font-family: "Ceviche One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    color: rgb(241, 81, 2);
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .square {
