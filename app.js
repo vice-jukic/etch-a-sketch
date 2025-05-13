@@ -2,12 +2,13 @@
 const SCREEN_SIZE = 550;
 
 const container = document.querySelector(".container");
+const button = document.querySelector(".change-grid")
 container.style.width = SCREEN_SIZE + "px";
 container.style.height = SCREEN_SIZE + "px";
 
 let divNum = 16;
 
-function createGrid() {
+function createGrid(divNum) {
 
     for (let row=1; row<=divNum; row++) {
         for (let col=1; col<=divNum; col++) {
@@ -20,6 +21,11 @@ function createGrid() {
     }
     const squares = document.getElementsByClassName("square");
     return squares
+}
+
+function removeGrid() {
+    const squares = document.querySelectorAll(".square");
+    squares.forEach(square => square.remove());
 }
 
 function randomColor() {
@@ -40,17 +46,33 @@ function changeColor(arr) {
     }
 }
 
-function createButton() {
-    const button = document.createElement("button");
-    button.classList.add("change-size");
-    button.textContent = "Change size";
-    container.appendChild(button);
+function newGrid() {
+
+    button.addEventListener("click", () => {
+        let newSize
+
+        while (true) {
+            newSize = parseInt(prompt("Enter a new size for the grid (1-100):"));
+
+            if(!isNaN(newSize)) {
+                if (newSize >= 1 && newSize <= 100) {
+                    break;
+                } else if (newSize <= 0) {
+                    alert("Your input must be a positive integer!");
+                } else if (newSize > 100) {
+                    alert("Your input must be below 100!");
+                }
+            } else {
+                alert("You must input a number:")
+            }
+        }
+        removeGrid();
+        const newGrid = createGrid(newSize);
+        changeColor(newGrid);
+    });
 }
 
-function run() {
-    const test = createGrid();
-    createButton();
-    changeColor(test);
-}
 
-run();
+const test = createGrid(divNum);
+changeColor(test);
+newGrid();
